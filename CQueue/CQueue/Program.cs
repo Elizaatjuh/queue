@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CQueue
 {
@@ -24,6 +26,10 @@ namespace CQueue
                 // debugging
                 passwordQueue.Debug();
 
+                //LinkedList<char> realpassword = new LinkedList<char>();
+                List<char> realpassword = new List<char>();
+                int index = 0;
+
                 // loop through queue
                 for (int j = 0; j < password.Length; j++)
                 {
@@ -35,7 +41,11 @@ namespace CQueue
                     {
                         case '-':
                             // functie backspace;
-                            Console.WriteLine("functie backspace");
+                            //realpassword.RemoveLast();
+                            //realpassword.
+                            Console.WriteLine("functie backspace - " + index);
+                            index--;
+                            realpassword.RemoveAt(index);
                             break;
                         case '<':
                             // functie cursor naar links
@@ -47,10 +57,14 @@ namespace CQueue
                             break;
                         default:
                             // functie voeg character toe
+                            realpassword.Add(queueItem);
+                            index++;
                             Console.WriteLine("functie voeg character toe");
                             break;
                     }
                 }
+                //string.Join(",", realpassword.ToArray());
+                Console.WriteLine(string.Join("", realpassword.ToArray()));
             }
         }
     }
