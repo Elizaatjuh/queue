@@ -41,25 +41,21 @@ namespace CQueue
                     {
                         case '-':
                             // functie backspace
-                            Console.WriteLine("functie backspace - " + index);
                             index--;
                             realpassword.RemoveAt(index);
                             break;
                         case '<':
                             // functie cursor naar links
-                            Console.WriteLine("functie cursor naar links");
                             if (index > 0) { index--; }
                             break;
                         case '>':
                             // functie cursor naar rechts
-                            Console.WriteLine("functie cursor naar rechts");
                             index++;
                             break;
                         default:
                             // functie voeg character toe
                             realpassword.Insert(index, queueItem);
                             index++;
-                            Console.WriteLine("functie voeg character toe");
                             break;
                     }
                 }
