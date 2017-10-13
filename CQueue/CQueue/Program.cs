@@ -40,9 +40,7 @@ namespace CQueue
                     switch(password[j])
                     {
                         case '-':
-                            // functie backspace;
-                            //realpassword.RemoveLast();
-                            //realpassword.
+                            // functie backspace
                             Console.WriteLine("functie backspace - " + index);
                             index--;
                             realpassword.RemoveAt(index);
@@ -50,20 +48,22 @@ namespace CQueue
                         case '<':
                             // functie cursor naar links
                             Console.WriteLine("functie cursor naar links");
+                            if (index > 0) { index--; }
                             break;
                         case '>':
                             // functie cursor naar rechts
                             Console.WriteLine("functie cursor naar rechts");
+                            index++;
                             break;
                         default:
                             // functie voeg character toe
-                            realpassword.Add(queueItem);
+                            realpassword.Insert(index, queueItem);
                             index++;
                             Console.WriteLine("functie voeg character toe");
                             break;
                     }
                 }
-                //string.Join(",", realpassword.ToArray());
+
                 Console.WriteLine(string.Join("", realpassword.ToArray()));
             }
         }
