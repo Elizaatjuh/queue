@@ -8,13 +8,18 @@ namespace CQueue
     {
         public static void Main(string[] args)
         {
-            Console.Write("Aantal wachtwoorden invoeren:");
             int passwords = int.Parse(Console.ReadLine());
+            string[] passwordsArray = new string[passwords];
+
+			for (int i = 0; i < passwords; i++)
+			{
+				string readpassword = Console.ReadLine();
+                passwordsArray[i] = readpassword;
+			}
+                
             for (int i = 0; i < passwords; i++)
             {
-                Console.Write("Voer wachtwoord in:");
-                string readpassword = Console.ReadLine();
-                char[] password = readpassword.ToCharArray();
+                char[] password = passwordsArray[i].ToCharArray();
                 EQueue<char> passwordQueue = new EQueue<char>(password.Length);
 
                 // add items to queue
