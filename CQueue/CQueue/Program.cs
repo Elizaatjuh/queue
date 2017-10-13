@@ -23,10 +23,6 @@ namespace CQueue
                     passwordQueue.Add(password[j]);
                 }
 
-                // debugging
-                passwordQueue.Debug();
-
-                //LinkedList<char> realpassword = new LinkedList<char>();
                 List<char> realpassword = new List<char>();
                 int index = 0;
 
@@ -34,9 +30,6 @@ namespace CQueue
                 for (int j = 0; j < password.Length; j++)
                 {
                     char queueItem = passwordQueue.Poll();
-
-                    Console.Write(queueItem + " - ");
-
                     switch(password[j])
                     {
                         case '-':
