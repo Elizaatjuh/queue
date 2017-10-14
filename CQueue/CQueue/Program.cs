@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CQueue
 {
@@ -41,27 +42,32 @@ namespace CQueue
                     {
                         case '-':
                             // functie backspace
-                            index--;
-                            realpassword.RemoveAt(index);
+                            if (index > 0) {
+								index--;
+								realpassword.RemoveAt(index);
+                            }
                             break;
+
                         case '<':
                             // functie cursor naar links
                             if (index > 0) { index--; }
                             break;
+
                         case '>':
                             // functie cursor naar rechts
-                            if (index <= charCount) { index++; }
+                            if (index < charCount) { index++; }
                             break;
+
                         default:
                             // functie voeg character toe
-							try {
+
+                            if (index == charCount) {
+                                realpassword.Add(queueItem);
+                            } else {
                                 realpassword.Insert(index, queueItem);   
-                            } catch (IndexOutOfRangeException e)
-                            {
-                                // index is out of range, possiblility to act on it
                             }
-                            charCount++;
-                            index++;
+							charCount++;
+							index++;
                             break;
                     }
                 }
