@@ -29,7 +29,9 @@ namespace CQueue
                 }
 
                 List<char> realpassword = new List<char>();
+
                 int index = 0;
+                int charCount = 0;
 
                 // loop through queue
                 for (int j = 0; j < password.Length; j++)
@@ -48,11 +50,17 @@ namespace CQueue
                             break;
                         case '>':
                             // functie cursor naar rechts
-                            index++;
+                            if (index <= charCount) { index++; }
                             break;
                         default:
                             // functie voeg character toe
-                            realpassword.Insert(index, queueItem);
+							try {
+                                realpassword.Insert(index, queueItem);   
+                            } catch (IndexOutOfRangeException e)
+                            {
+                                // index is out of range, possiblility to act on it
+                            }
+                            charCount++;
                             index++;
                             break;
                     }
